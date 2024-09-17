@@ -5,7 +5,7 @@ project:
 website:
   title: "Ryan Dearing Portfolio"
   navbar:
-    logo: 
+    # logo: 
     # logo-href: 
     right:
 
