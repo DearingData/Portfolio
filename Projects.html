@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.545">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ryan Dearing </title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(images/br2.png);
+background-size: cover;
+      }
+</style>
+
+
+
+
+
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+  </div>
+            <!-- <div id="quarto-search" class="" title="Search"></div> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li> 
+  <li class="nav-item">
+    <a class="nav-link" href="./Projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li> 
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+
+
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/ryan-dearing/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li> 
+
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/dearingdata"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li> 
+
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:dearingryan93@gmail.com"> 
+      <i class="bi bi-envelope" role="img"></i>
+      <span class="menu-text"></span>
+    </a>
+  </li>
+
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+
+
+
+
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+    <div class="quarto-title-banner page-columns page-full" style="display: flex; justify-content: center; align-items: center; height: 24vh;">
+      <div class="quarto-title column-body">
+        <div style="text-align:center">
+        <h1 class="title">Projects</h1></div>
+        
+ 
+
+        <div class="quarto-categories">
+           
+            <div class="quarto-category" onclick="window.quartoListingCategory('All Projects'); return false;">All Projects</div>
+            <div class="quarto-category" onclick="window.quartoListingCategory('Python'); return false;">Python</div>
+            <div class="quarto-category" onclick="window.quartoListingCategory('Neural Networks'); return false;">Neural Network</div>
+            <div class="quarto-category" onclick="window.quartoListingCategory('Webscraping'); return false;">Webscraping</div>
+            <div class="quarto-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">Machine Learning</div>
+            <div class="quarto-category" onclick="window.quartoListingCategory('Random Forest'); return false;">Random Forest</div>
+            <div class="quarto-category" onclick="window.quartoListingCategory('Data Science'); return false;">Data Science</div>
+            <div class="quarto-category" onclick="window.quartoListingCategory('Beautiful Soup'); return false;">Beautiful Soup</div>
+        </div>
+                    </div>
+    </div>
+
+   
+
+
+
+<!--- Post Below To add to Page-->        
+ 
+
+
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing" >
+    <div class="list grid quarto-listing-cols-3" style="padding-inline-start: 100px; gap: 10px; margin-right: -200px; margin-left: -150px;">
+    
+    
+
+    
+    <div class="g-col-1" data-index="0" data-categories="All Projects,Machine Learning,Python,Data Science,Modeling,Neural Networks,Random Forest" data-listing-date-sort="1705622400000" data-listing-file-modified-sort="1705643881871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="904">
+    <a href="./posts/BJJHeroesDataModeling/BJJHeroesDataModelingProject.html" class="quarto-grid-link">
+    <div class="quarto-grid-item card h-100 card-left">
+    <p class="card-img-top">
+    <img src="./posts/post-images/190124.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+    </p>
+    <div class="card-body post-contents">
+    <h5 class="no-anchor card-title listing-title">
+    Predicting Jiu-Jitsu Matches with Neural Networks and Random Forests
+    </h5>
+    <div class="listing-reading-time card-text text-muted">
+    8 min
+    </div>
+    <div class="listing-categories">
+    <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+    Python
+    </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('Data Science'); return false;">
+    Data Science
+    </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('Modeling'); return false;">
+        Modeling
+        </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('Neural Networks'); return false;">
+        Neural Network
+        </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('Random Forest'); return false;">
+        Random Forest
+        </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('All Projects'); return false;">
+        </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
+        Machine Learning
+        </div>
+ 
+
+    </div>
+    <div class="card-text listing-description">
+    In this project, I will be doing exploratory analysis and using the cleaned BJJHeroes data to create a series of data models to predict the winners of BJJ matches.
+    </div>
+    <div class="card-attribution card-text-small justify">
+  
+    <div class="listing-date">
+    Coming Soon...
+    </div>
+    </div>
+    </div>
+    </div>
+    </a>
+    </div>
+    
+
+    
+    
+    <div class="g-col-1" data-index="1" data-categories="All Projects,Python,Coding Practices,Data Cleaning" data-listing-date-sort="1690761600000" data-listing-file-modified-sort="1705643928479" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1022">
+    <a href="./posts/CleaningScrapedData/CleaningScrapedDataProject.html" class="quarto-grid-link">
+    <div class="quarto-grid-item card h-100 card-left">
+    <p class="card-img-top">
+    <img src="./posts/post-images/dockers.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+    </p>
+    <div class="card-body post-contents">
+    <h5 class="no-anchor card-title listing-title">
+    Data Cleaning <br> BJJHeroes Webscraping Data
+    </h5>
+    <div class="listing-reading-time card-text text-muted">
+    6 min
+    </div>
+    <div class="listing-categories">
+    
+    <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+    Python
+    </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('Data Cleaning'); return false;">
+        Data Cleaning
+        </div>
+    <div class="listing-category" onclick="window.quartoListingCategory('All Projects'); return false;">
+    </div>
+   
+   
+    </div>
+    <div class="card-text listing-description">
+    In this project, I will be cleaning the data that was scraped from the Webscraping BJJHeroes.com project.
+    </div>
+    <div class="card-attribution card-text-small justify">
+
+    <div class="listing-date">
+    Coming Soon...
+    </div>
+    </div>
+    </div>
+    </div>
+    </a>
+    </div>
+    
+    
+    <div class="g-col-1" data-index="2" data-categories="All Projects,Webscraping,Python,Beautiful Soup" data-listing-date-sort="1687132800000" data-listing-file-modified-sort="1705640988947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1370">
+    <a href="./posts/WebScrapingBJJHeroes/WebScrapingProject.html" class="quarto-grid-link">
+    <div class="quarto-grid-item card h-100 card-left">
+    <p class="card-img-top">
+    <img src="./posts/post-images/seventeen.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+    </p>
+    <div class="card-body post-contents">
+        <h5 class="no-anchor card-title listing-title">
+            Webscraping Athlete Results with Beautiful Soup from BJJHeroes.com
+          </h5>
+          <div class="listing-reading-time card-text text-muted">
+          7 min
+          </div>
+          <div class="listing-categories">
+          <div class="listing-category" onclick="window.quartoListingCategory('Webscraping'); return false;">
+          Webscraping
+          </div>
+          <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+          Python
+          </div>
+          <div class="listing-category" onclick="window.quartoListingCategory('Beautiful Soup'); return false;">
+          Beautiful Soup
+          </div>
+          <div class="listing-category" onclick="window.quartoListingCategory('All Projects'); return false;">
+        </div>
+          </div>
+          <div class="card-text listing-description">
+          Interested in sports data but can't find a dataset or api with what you need? In this project, I demonstrate how to scrape athlete match records off of the BJJHeroes website using Python and the BeautifulSoup library. 
+          </div>
+          <div class="card-attribution card-text-small justify">
+          
+          <div class="listing-date">
+          Jul 19, 2024
+          </div>
+          </div>
+          </div>
+          </div>
+          </a>
+          </div>

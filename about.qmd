@@ -1,0 +1,39 @@
+
+  </a>
+  <a href="https://www.linkedin.com/in/ryan-dearing/" class="about-link" rel="" target="">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text"></span>
+  </a>
+  <a href="https://github.com/Dearingdata" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text"></span>
+  </a>
+  <a href="./Resume.html" class="about-link" rel="" target="">
+    <i class="bi bi-file-earmark-person-fill"></i>
+     <span class="about-link-text">Resume</span>
+  </a>
+</div>
+  </div>
+  
+<div class="about-contents"><main class="content" id="quarto-document-content"style="margin-right:-100px;">
+
+<p>Hello! 👋 I am currently a Business Analytics Advisor with Cigna Health Insurance, and recently obtained a Masters in Applied Data Science from Baypath University.</p> 
+
+<p>Learning new things is a passion of mine, and I am always searching for more interesting topics to dive into. This website is to showcase projects I am working on and to operate as a living resume.</p> The pursuit of knowledge is what lead me to a new career in data, as you never know how the next analysis might change the business or the world for the better.</p>
+<p>To learn more about my full educational and work history, you can download my <strong>resume</strong> <a href="Resume.pdf">here</a>.</p>
+<section id="work-experience" class="level2">
+<h2 data-anchor-id="work-experience"><font size="+3"> Work Experience 👨🏻‍💻</font></h2>
+<hr>
+<p><font size="+2"> <strong>Data Analytics Experience</strong></font></p>
+<p><strong>Cigna Healthcare</strong> | Jun 2023 - Present <br><i>Business Analysics Advisor</i></p>
+<p><font size="+2"> <strong>School Counseling Experience</strong></font></p>
+<p><strong>Chicopee High School</strong> | 2022 - 2023 <br> <i>School Social Worker</i></p>
+<p><strong>Monson High School</strong> | 2019 - 2022 <br> <i>School Counselor</i></p>
+
+
+</section>
+</main></div>
+</div>
+
+
+

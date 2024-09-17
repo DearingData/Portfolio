@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.545">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ryan Dearing">
+<meta name="dcterms.date" content="2024-06-3">
+
+<title>Ryan Dearing - Web Scraping</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+  .quarto-title-block .quarto-title-banner h1,
+  .quarto-title-block .quarto-title-banner h2,
+  .quarto-title-block .quarto-title-banner h3,
+  .quarto-title-block .quarto-title-banner h4,
+  .quarto-title-block .quarto-title-banner h5,
+  .quarto-title-block .quarto-title-banner h6
+  {
+    color: white;
+  }
+
+  .quarto-title-block .quarto-title-banner {
+    color: white;
+    background-image: url(../../images/br2.png);
+    background-size: cover;
+  }
+</style>
+
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="devExplore - Simplifying R Package Management - renv vs packrat">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://pr2tik1.github.io/posts/post-images/190124.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top quarto-banner">
+<nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+  <div class="navbar-brand-container mx-auto">
+
+</div>
+       <!--  <div id="quarto-search" class="" title="Search"></div> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+<span class="navbar-toggler-icon"></span>
+</button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+<a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+</li>  
+<li class="nav-item">
+<a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About me</span></a>
+</li>  
+<li class="nav-item">
+<a class="nav-link" href="../../Resume.html"> 
+<span class="menu-text">Resume</span></a>
+</li>  
+<li class="nav-item">
+<a class="nav-link" href="../../Projects.html"> 
+<span class="menu-text">Projects</span></a>
+</li>  
+
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+
+<li class="nav-item compact">
+<a class="nav-link" href="https://www.linkedin.com/in/ryan-dearing/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+</li> 
+
+<li class="nav-item compact">
+<a class="nav-link" href="https://github.com/dearingdata"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+</li> 
+
+<li class="nav-item compact">
+<a class="nav-link" href="mailto:dearingryan93@gmail.com"> 
+  <i class="bi bi-envelope" role="img"></i>
+  <span class="menu-text"></span>
+</a>
+</li>
+</ul>
+
+      </div> <!-- /navcollapse -->
+      <div class="quarto-navbar-tools">
+</div>
+  </div> <!-- /container-fluid -->
+</nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"style="margin-top: -30px; padding-top: 0px; padding-bottom: -50px; margin-bottom: -30px;">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body"><br>
+      <h1 class="title">Webscraping Athlete Results with Beautiful Soup from BJJHeroes.com</h1>
+      
+                                <div class="quarto-categories">
+                <div class="quarto-category">Web Scraping</div>
+                <div class="quarto-category">Beautiful Soup</div>
+                <div class="quarto-category">Python</div>
+                
+              </div>
+             
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#Beautifulsoup Explained" id="toc-Beautifulsoup Explained" class="nav-link" data-scroll-target="#Beautifulsoup Explained">Beautifulsoup Explained</a></li>
+  <li><a href="#Finding the 'Tags' we are looking for" id="toc-Finding the 'Tags' we are looking for" class="nav-link" data-scroll-target="#Finding the 'Tags' we are looking for">Finding the 'Tags' we are looking for</a>
+  <li><a href="#Scraping Table information into a Dataframe" id="toc-Scraping Table information into a Dataframe" class="nav-link" data-scroll-target="#Scraping Table information into a Dataframe">Scraping Table information into a Dataframe</a>
+  <li><a href="#Using Stored Athlete URL to Extract each Athlete's Match Results" id="toc-Using Stored Athlete URL to Extract each Athlete's Match Results" class="nav-link" data-scroll-target="#Using Stored Athlete URL to Extract each Athlete's Match Results">Using Athlete URL to Extract Match Results</a></li>
+  <li><a href="#Replacing Athlete URL with Athlete Name" id="toc-Replacing Athlete URL with Athlete Name" class="nav-link" data-scroll-target="#Replacing Athlete URL with Athlete Name"><td class="index-column"></td></a></li>
+  <li><a href="#Conclusion" id="toc-Conclusion" class="nav-link" data-scroll-target="#Conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+
+
+
+
+
+
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Unlike most mainstream sports that enjoy centralized national leagues, millions of dollars that can be spent to collect and organize data efficiently, and fans that would love to spend extra time tracking player statistics, Jiu-Jitsu continues to be very much a grassroots effort with a scattered data landscape.</p>
+<p>As such, finding reliable and easy to access datasets are few and far between. This project demonstrates how to utilize <strong>Python</strong> and the <strong>Beautifulsoup</strong> library to collect over 50,000 match results from the <a href="https://bjjheroes.com">BJJHeroes</a> website.</p>
+
+
+</section>
+
+
+
+
+<section id="Beautifulsoup Explained" class="level2">
+<h2 class="anchored" data-anchor-id="Beautifulsoup Explained">Beautifulsoup Explained</h2>
+<p>Beautifulsoup is an html parsing library.</p>
+<p>What that means is that from the <b>requests</b> library, we can use the <b>get</b> function to obtain access to the website within a python notebook. Then, using the <b>Beautifulsoup</b> library, we can parse through the html code of a website to obtain the information we are looking for. </p>
+</section>
+
+
+
+<section id="Importing packages and accessing website" class="level2">
+<h2 class="anchored" data-anchor-id="Importing packages and accessing website">Importing Packages and Accessing Website</h2>
+<p>To begin, I am:</p>
+<ul>
+  <li> Importing requests to access the website</li>
+  <li> Importing pandas </li>
+  <li> Declaring the website as a variable <b>r</b> so that we can access it</li>
+  <li> Showing the first 500 characters of the html website to confirm we have access to it</li>
+</ul>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code and Output Example</title>
+    <style>
+        .container {
+            background-color: #f9f9f9; /* Light background for the entire container */
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .code-box {
+            background-color: #f5f5f5; /* Light grey background for code */
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            color: #333;
+            overflow-x: auto;
+        }
+        .output-box {
+            background-color: #e0e0e0; /* Slightly darker grey background for output */
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            color: #000;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">  <!-- Container to wrap both code and output -->
+  <!-- Code section -->
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <pre class="code-box">
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+
+r = requests.get('https://www.bjjheroes.com/a-z-bjj-fighters-list')
+# Print the first 500 characters of the HTML
+print(r.text[0:500])
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Output section -->
+  <div class="jp-Cell-outputWrapper">
+    <div class="jp-OutputArea jp-Cell-outputArea">
+      <div class="jp-OutputArea-child">
+        <div class="jp-OutputPrompt jp-OutputArea-prompt">Out [1]:</div>
+        <div class="output-box">
+          &lt;!doctype html&gt;<br>
+          &lt;head dir="ltr" lang="en-US"&gt;<br>
+          &lt;meta charset="UTF-8"&gt;<br>
+          &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;<br>
+          &lt;link href="//www.google-analytics.com" rel="dns-prefetch"&gt;<br>
+          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /&gt;<br>
+          &lt;link rel="pingback" href="https://www.bjjheroes.com/xmlrpc.php"&gt;<br>
+          &lt;link rel="icon" id="favicon" type="image/png" href="https://www.bjjheroes.com/wp-content/uploads/2020/03/favicon-16x"&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+</section>
+
+
+
+
+<section id="Finding the 'Tags' we are looking for" class="level2">
+<h3 class="anchored" data-anchor-id="Finding the 'Tags' we are looking for">Finding the 'Tags' we are looking for</h3>
+<p>Now that we know we are accessing the website html, here is an example of using the parser to return parts of the html website. We will assign the variable <b>tag</b> the title tag from the website.</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code and Output Example</title>
+    <style>
+        .container {
+            background-color: #f9f9f9; /* Light background for the entire container */
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .code-box {
+            background-color: #f5f5f5; /* Light grey background for code */
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            color: #333;
+            overflow-x: auto;
+        }
+        .output-box {
+            background-color: #e0e0e0; /* Slightly darker grey background for output */
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            color: #000;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">  <!-- Container to wrap both code and output -->
+  <!-- Code section -->
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <pre class="code-box">
+soup = BeautifulSoup(r.text, 'html.parser')
+tag = soup.title
+tag
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Output section -->
+  <div class="jp-Cell-outputWrapper">
+    <div class="jp-OutputArea jp-Cell-outputArea">
+      <div class="jp-OutputArea-child">
+        <div class="jp-OutputPrompt jp-OutputArea-prompt">Out [1]:</div>
+        <div class="output-box">
+          &lt;Competitor and Coach Database | BJJ Heroes&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+</section>
+
+<p></p>
+<p>Looking at the page website we see that the First Name, Last Name, Nickname, and Team are stored in a dataframe style format.</p>
+<p></p><br>
+<body><img src="../../images/BJJHeroesPicture.png" alt="BJJ heroes table" width="800">
+</body>
+
+
+
+<p><br><br>This table is stored as a <b>Table Row (tr)</b> class</p>
+<p>Within a <b>tr</b>, the row and column entries are stored as a <b>Table Data (td)</b> class.</p>
+<p>We can use the <b>.find_all()</b> method to return <b>all</b> entries that have the <b>td</b> class.</p>
+
+<div class="container">  <!-- Container to wrap both code and output -->
+  <!-- Code section -->
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <pre class="code-box">
+tag = soup.find_all("td")
+
+print('First 20 entries')
+tag[:10]
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Output section -->
+  <div class="jp-Cell-outputWrapper">
+    <div class="jp-OutputArea jp-Cell-outputArea">
+      <div class="jp-OutputArea-child">
+        <div class="jp-OutputPrompt jp-OutputArea-prompt">Out [1]:</div>
+        <div class="output-box">
+          First 20 entries<br><br>
+          &lt;td class="column-1"&gt;&lt;a href="/?p=8141"&gt;Aarae&lt;/a&gt;&lt;/td&gt;,<br>
+          &lt;td class="column-2"&gt;&lt;a href="/?p=8141"&gt;Alexander&lt;/a&gt;&lt;/td&gt;,<br>
+          &lt;td class="column-3"&gt;&lt;/td&gt;,<br>
+          &lt;td class="column-4"&gt;Team Lloyd Irvin&lt;/td&gt;,<br>
+          &lt;td class="column-1"&gt;&lt;a href="/?p=9246"&gt;Aaron&lt;/a&gt;&lt;/td&gt;,<br>
+          &lt;td class="column-2"&gt;&lt;a href="/?p=9246"&gt;Johnson&lt;/a&gt;&lt;/td&gt;,<br>
+          &lt;td class="column-3"&gt;&lt;a href="/?p=9246"&gt;Tex&lt;/a&gt;&lt;/td&gt;,<br>
+          &lt;td class="column-4"&gt;Unity JJ&lt;/td&gt;,<br>
+          &lt;td class="column-1"&gt;&lt;a href="/?p=8494"&gt;Abdurakhman&lt;/a&gt;&lt;/td&gt;,<br>
+          &lt;td class="column-2"&gt;&lt;a href="/?p=8494"&gt;Bilarov&lt;/a&gt;&lt;/td&gt;
+         
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>What can we learn from the above output?</h3>
+<ul>
+  <li>Each name contains a link (<i>a href="..."</i>) , which we can use to get to each individual athletes stats page</li>
+  <li>Each entry follows the same format, so we can reliably iterate through and store this information in a dataframe</li>
+</ul>
+</body>
+</html>
+</section>
+
+
+
+
+
+
+
+
+
+<section id="Scraping Table information into a Dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="Scraping Table information into a Dataframe">Scraping Table information into a Dataframe</h2>
+<p>Next, now that we have identified the structure of the data within the html file we want, we can use a <b>for</b> loop to pull the data into a dataframe</p>
+<p>For each row in table, we will:</p>
+<ul>
+  <li>Find all rows in the table and confirm there are 4 columns</li>
+  <li>For each column, find the &lt;a&gt; tag, and extract the name or text entry, and the URL if it is present</li>
+  <li>Store these under the variables "first_name","first_name_url", etc.</li>
+  <li>Append these stored values into the empty dictionary called "data", then convert it into a dataframe</li>
+</ul>
+
+
+
+
+
+
+
+<div class="container">  <!-- Container to wrap both code and output -->
+  <!-- Code section -->
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <pre class="code-box">
+# Find all table rows
+rows = soup.find_all("tr")
+
+# Initialize empty list
+data = []
+
+# Iterate over the rows and extract
+for row in rows:
+    columns = row.find_all("td")
+    if len(columns) == 4:  # confirm the column count in the row
+        first_name_tag = columns[0].find("a")
+        first_name = first_name_tag.text.strip() if first_name_tag else columns[0].text.strip()
+        first_name_url = first_name_tag['href'] if first_name_tag else None
+
+        last_name_tag = columns[1].find("a")
+        last_name = last_name_tag.text.strip() if last_name_tag else columns[1].text.strip()
+        last_name_url = last_name_tag['href'] if last_name_tag else None
+
+        nick_name_tag = columns[2].find("a")
+        nick_name = nick_name_tag.text.strip() if nick_name_tag else columns[2].text.strip()
+        nick_name_url = nick_name_tag['href'] if nick_name_tag else None
+
+        team_tag = columns[3].find("a")
+        team = team_tag.text.strip() if team_tag else columns[3].text.strip()
+        team_url = team_tag['href'] if team_tag else None
+        
+        # Append data to list
+        data.append({
+            "First Name": first_name,
+            "Last Name": last_name,
+            "Nick Name": nick_name,
+            "Team": team,
+            "Athlete URL": first_name_url,
+        })
+
+# Convert the list to DataFrame
+df = pd.DataFrame(data)
+
+# Display the DataFrame
+print(df)
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  &lt;  &gt;
+  <!-- Output section -->
+  <div class="jp-Cell-outputWrapper">
+    <div class="jp-OutputArea jp-Cell-outputArea">
+      <div class="jp-OutputArea-child">
+        <div class="jp-OutputPrompt jp-OutputArea-prompt">Out [1]:</div>
+        <div class="output-box">
+          <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Nick Name</th>
+                    <th>Team</th>
+                    <th>Athlete URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="index-column">0</td>
+                    <td>Aarae</td>
+                    <td>Alexander</td>
+                    <td></td>
+                    <td>Team Lloyd Irvin</td>
+                    <td>/?p=8141</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">1</td>
+                    <td>Aaron</td>
+                    <td>Johnson</td>
+                    <td>Tex</td>
+                    <td>Unity JJ</td>
+                    <td>/?p=9246</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">2</td>
+                    <td>Abdurakhman</td>
+                    <td>Bilarov</td>
+                    <td></td>
+                    <td>Team Nogueira</td>
+                    <td>/?p=8494</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">3</td>
+                    <td>Abmar</td>
+                    <td>Barbosa</td>
+                    <td></td>
+                    <td></td>
+                    <td>/?p=390</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">4</td>
+                    <td>Abraham</td>
+                    <td>Marte Messina</td>
+                    <td></td>
+                    <td>Yamasaki / Basico</td>
+                    <td>/?p=3083</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">1379</td>
+                    <td>Valdir</td>
+                    <td>Canuto</td>
+                    <td>Tio Chico</td>
+                    <td>Zenith JJ</td>
+                    <td>/?p=7505</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">1380</td>
+                    <td>Nakapan</td>
+                    <td>Phungephorn</td>
+                    <td></td>
+                    <td>BETA Academy</td>
+                    <td>/?p=7512</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">1381</td>
+                    <td>Eliot</td>
+                    <td>Kelly</td>
+                    <td></td>
+                    <td>Yemaso JJ</td>
+                    <td>/?p=7519</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">1382</td>
+                    <td>Mauricio</td>
+                    <td>Pereira</td>
+                    <td>Mauricao</td>
+                    <td>Behring JJ</td>
+                    <td>/?p=7556</a></td>
+                </tr>
+                <tr>
+                    <td class="index-column">1383</td>
+                    <td>Vinicius</td>
+                    <td>Garcia</td>
+                    <td></td>
+                    <td></td>
+                    <td>/?p=7636</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Display row and column count -->
+        <div class="table-info">
+            [1384 rows x 5 columns]
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<section id="Using Stored Athlete URL to Extract each Athlete's Match Results" class="level2">
+<h2 class="anchored" data-anchor-id="Using Stored Athlete URL to Extract each Athlete's Match Results">Using Stored Athlete URL to Extract each Athlete's Match Results</h2>
+<p>Now that we have a hyperlink stored in the dataframe, we can use it to access each athletes individual page with their match results.</p>
+<p>On each page, they have another table, similar to the one we just used to obtain their basic information, that we can use a <b>for</b> loop on once on their page to obtain their match results.</p>
+
+
+<body><img src="../../images/NickyTable.png" alt="BJJ heroes table" width="800">
+</body><br><br>
+<p> In the following code, we will:</p>
+<ul>
+  <li>Create a function <b>extract_athlete_data()</b> to send a request for the website using the URL + the Athlete URL</li>
+<li>Confirm there are 8 columns, and store the information from each row entry under the subsequent column name</li>
+<li>Loop through each athlete_url in the original dataframe, extract the data and store it in a final list</li>
+<li>Convert the list into a new dataframe that includes all athlete match results on BJJHeroes.com</li>
+
+</ul>
+
+
+<div class="container">  <!-- Container to wrap both code and output -->
+  <!-- Code section -->
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <pre class="code-box">
+# Function to append athlete url and extract data
+def extract_athlete_data(athlete_url):
+    full_url = f'https://www.bjjheroes.com{athlete_url}'
+    response = requests.get(full_url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Find all table rows
+    rows = soup.find_all("tr")
+
+    # Empty list to store data
+    data = []
+
+    # Iterate extract
+    for row in rows:
+        columns = row.find_all("td")
+        if len(columns) == 8:  # confirm table column count
+            opponent_tag = columns[1].find("a")
+            opponent_name = opponent_tag.text.strip() if opponent_tag else columns[1].text.strip()
+            result = columns[2].text.strip()
+            method_tag = columns[3].find("a")
+            method = method_tag.text.strip() if method_tag else columns[3].text.strip()
+            event = columns[4].text.strip()
+            weight = columns[5].text.strip()
+            stage = columns[6].text.strip()
+            year = columns[7].text.strip()
+
+            # Append to list
+            data.append({
+                "Athlete URL": full_url,
+                "Opponent Name": opponent_name,
+                "Result": result,
+                "Method": method,
+                "Event": event,
+                "Weight": weight,
+                "Stage": stage,
+                "Year": year
+            })
+    return data
+
+# Store the final data
+all_data = []
+
+# Loop through each athlete in the initial DataFrame
+for index, row in df.iterrows():
+    athlete_url = row['Athlete URL']
+    athlete_data = extract_athlete_data(athlete_url)
+    all_data.extend(athlete_data)
+
+# Convert the list to pandas DataFrame
+df_final = pd.DataFrame(all_data)
+
+# Display  DataFrame
+print(df_final)
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Output section -->
+  <div class="jp-Cell-outputWrapper">
+    <div class="jp-OutputArea jp-Cell-outputArea">
+      <div class="jp-OutputArea-child">
+        <div class="jp-OutputPrompt jp-OutputArea-prompt">Out [1]:</div>
+        <div class="output-box">
+          <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Athlete URL</th>
+                    <th>Opponent Name</th>
+                    <th>Result</th>
+                    <th>Method</th>
+                    <th>Event</th>
+                    <th>Weight</th>
+                    <th>Stage</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 0 -->
+                <tr>
+                    <td class="index-column">0</td>
+                    <td><a href="https://www.bjjheroes.com/?p=9246">https://www.bjjheroes.com/?p=9246</a></td>
+                    <td>Quentin Rosensweig</td>
+                    <td>L</td>
+                    <td>Inside heel hook</td>
+                    <td>Kakuto 5</td>
+                    <td>ABS</td>
+                    <td>SPF</td>
+                    <td>2015</td>
+                </tr>
+                <!-- Row 1 -->
+                <tr>
+                    <td class="index-column">1</td>
+                    <td><a href="https://www.bjjheroes.com/?p=9246">https://www.bjjheroes.com/?p=9246</a></td>
+                    <td>Neiman Gracie</td>
+                    <td>L</td>
+                    <td>RNC</td>
+                    <td>NoGi Pan Ams</td>
+                    <td>94KG</td>
+                    <td>SF</td>
+                    <td>2015</td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td class="index-column">2</td>
+                    <td><a href="https://www.bjjheroes.com/?p=9246">https://www.bjjheroes.com/?p=9246</a></td>
+                    <td>Richie Martinez</td>
+                    <td>L</td>
+                    <td>Heel hook</td>
+                    <td>Kakuto Challenge</td>
+                    <td>ABS</td>
+                    <td>SF</td>
+                    <td>2015</td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td class="index-column">3</td>
+                    <td><a href="https://www.bjjheroes.com/?p=9246">https://www.bjjheroes.com/?p=9246</a></td>
+                    <td>Leo Nogueira</td>
+                    <td>L</td>
+                    <td>Points</td>
+                    <td>Atlanta W. Open</td>
+                    <td>94KG</td>
+                    <td>SF</td>
+                    <td>2016</td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                  <td class="index-column">4</td>
+                    <td><a href="https://www.bjjheroes.com/?p=9246">https://www.bjjheroes.com/?p=9246</a></td>
+                    <td>Romulo Azevedo</td>
+                    <td>L</td>
+                    <td>N/A</td>
+                    <td>UAEJJF NYC Pro</td>
+                    <td>94KG</td>
+                    <td>SF</td>
+                    <td>2016</td>
+                </tr>
+                <tr>
+                  <td>...</a></td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+              </tr>
+                <!-- More rows go here -->
+                <!-- Last few rows -->
+                <tr>
+                    <td class="index-column">50828</td>
+                    <td><a href="https://www.bjjheroes.com/?p=7636">https://www.bjjheroes.com/?p=7636</a></td>
+                    <td>Cody Heller</td>
+                    <td>W</td>
+                    <td>N/A</td>
+                    <td>Atlanta SM Open</td>
+                    <td>ABS</td>
+                    <td>4F</td>
+                    <td>2019</td>
+                </tr>
+                <tr>
+                    <td class="index-column">50829</td>
+                    <td><a href="https://www.bjjheroes.com/?p=7636">https://www.bjjheroes.com/?p=7636</a></td>
+                    <td>Daniel Olivier</td>
+                    <td>W</td>
+                    <td>Canto choke</td>
+                    <td>New Orleans Open</td>
+                    <td>88KG</td>
+                    <td>SF</td>
+                    <td>2020</td>
+                </tr>
+                <tr>
+                  <td class="index-column">50830</td>
+                    <td><a href="https://www.bjjheroes.com/?p=7636">https://www.bjjheroes.com/?p=7636</a></td>
+                    <td>Joshua Murdock</td>
+                    <td>W</td>
+                    <td>Points</td>
+                    <td>New Orleans Open</td>
+                    <td>ABS</td>
+                    <td>SF</td>
+                    <td>2020</td>
+                </tr>
+                <tr>
+                    <td class="index-column">50831</td>
+                    <td><a href="https://www.bjjheroes.com/?p=7636">https://www.bjjheroes.com/?p=7636</a></td>
+                    <td>Kyle Raemisch</td>
+                    <td>W</td>
+                    <td>Mounted X choke</td>
+                    <td>F2W 153</td>
+                    <td>85KG</td>
+                    <td>SPF</td>
+                    <td>2020</td>
+                </tr>
+                <tr>
+                    <td class="index-column">50832</td>
+                    <td><a href="https://www.bjjheroes.com/?p=7636">https://www.bjjheroes.com/?p=7636</a></td>
+                    <td>Kevin Vieira</td>
+                    <td>W</td>
+                    <td>Hashimoto choke</td>
+                    <td>Pan American</td>
+                    <td>82KG</td>
+                    <td>8F</td>
+                    <td>2020</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Display row and column count -->
+        <div class="table-info">
+            [50833 rows x 8 columns]
+        </div>
+        
+        </body>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<section id="Replacing Athlete URL with Athlete Name" class="level2">
+<h2 class="anchored" data-anchor-id="Replacing Athlete URL with Athlete Name">Replacing Athlete URL with Athlete Name<td class="index-column"></td></h2>
+<p>Now that we have all of the athlete results stored, the last step, which we could have done earlier, is to replace the "Athlete URL" column with the Athlete's name.</p>
+<p>This code:</p>
+<ul>
+  <li>take the ID from 'Athlete URL', in the original <b>df</b> and the final dataframe <b>df_final</b></li>
+  <li>Then it merges the two dataframes on the matching ID found in the hyperlink</li>
+<li>Now, since we have added the 'First Name' and 'Last Name' columns to the dataframe, we can drop the ID columns, and shift the columns so that the name of the athlete is at the beginning</li>
+</ul>
+
+<div class="container">  <!-- Container to wrap both code and output -->
+  <!-- Code section -->
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <pre class="code-box">
+df['ID'] = df['Athlete URL'].str.extract(r'\?p=(\d+)')
+df_final['ID'] = df_final['Athlete URL'].str.extract(r'\?p=(\d+)')
+df_merged = df_final.merge(df[['ID', 'First Name', 'Last Name']], on='ID', how='left')
+
+# Drop the 'Athlete URL' and 'ID' columns 
+df_merged.drop(columns=["Athlete URL", "ID"], inplace=True)
+
+# Reorder columns to place 'First Name' and 'Last Name' at the beginning
+df_merged = df_merged[["First Name", "Last Name", "Opponent Name", "Result", "Method", "Event", "Weight", "Stage", "Year"]]
+
+# Final DataFrame
+print(df_merged)
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Output section -->
+  <div class="jp-Cell-outputWrapper">
+    <div class="jp-OutputArea jp-Cell-outputArea">
+      <div class="jp-OutputArea-child">
+        <div class="jp-OutputPrompt jp-OutputArea-prompt">Out [1]:</div>
+        <div class="output-box">
+          <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Opponent Name</th>
+                    <th>Result</th>
+                    <th></th>
+                    <th>Method</th>
+                    <th>Event</th>
+                    <th>Weight</th>
+                    <th></th>
+                    <th>Stage</th>
+                    <th></th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 0 -->
+                <tr>
+                    <td class="index-column">0</td>
+                    <td>Aaron</td>
+                    <td>Johnson</td>
+                    <td>Quentin Rosensweig</td>
+                    <td>L</td>
+                    <td></td>
+                    <td>Inside heel hook</td>
+                    <td>Kakuto 5</td>
+                    <td>ABS</td>
+                    <td></td>
+                    <td>SPF</td>
+                    <td></td>
+                    <td>2015</td>
+                </tr>
+                <!-- Row 1 -->
+                <tr>
+                    <td class="index-column">1</td>
+                    <td>Aaron</td>
+                    <td>Johnson</td>
+                    <td>Neiman Gracie</td>
+                    <td>L</td>
+                    <td></td>
+                    <td>RNC</td>
+                    <td>NoGi Pan Ams</td>
+                    <td>94KG</td>
+                    <td></td>
+                    <td>SF</td>
+                    <td></td>
+                    <td>2015</td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td class="index-column">2</td>
+                    <td>Aaron</td>
+                    <td>Johnson</td>
+                    <td>Richie Martinez</td>
+                    <td>L</td>
+                    <td></td>
+                    <td>Heel hook</td>
+                    <td>Kakuto Challenge</td>
+                    <td>ABS</td>
+                    <td></td>
+                    <td>SF</td>
+                    <td></td>
+                    <td>2015</td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td class="index-column">3</td>
+                    <td>Aaron</td>
+                    <td>Johnson</td>
+                    <td>Leo Nogueira</td>
+                    <td>L</td>
+                    <td></td>
+                    <td>Points</td>
+                    <td>Atlanta W. Open</td>
+                    <td>94KG</td>
+                    <td></td>
+                    <td>SF</td>
+                    <td></td>
+                    <td>2016</td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td class="index-column">4</td>
+                    <td>Aaron</td>
+                    <td>Johnson</td>
+                    <td>Romulo Azevedo</td>
+                    <td>L</td>
+                    <td></td>
+                    <td>N/A</td>
+                    <td>UAEJJF NYC Pro</td>
+                    <td>94KG</td>
+                    <td></td>
+                    <td>SF</td>
+                    <td></td>
+                    <td>2016</td>
+                </tr>
+                <!-- Additional rows go here -->
+                <tr>
+                  <td>...</a></td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td></td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td></td>
+                  <td>...</td>
+                  <td></td>
+                  <td>...</td>
+              </tr>
+                <!-- Last few rows -->
+                <tr>
+                    <td class="index-column">51294</td>
+                    <td>Vinicius</td>
+                    <td>Garcia</td>
+                    <td>Cody Heller</td>
+                    <td>W</td>
+                    <td></td>
+                    <td>N/A</td>
+                    <td>Atlanta SM Open</td>
+                    <td>ABS</td>
+                    <td></td>
+                    <td>4F</td>
+                    <td></td>
+                    <td>2019</td>
+                </tr>
+                <tr>
+                    <td class="index-column">51295</td>
+                    <td>Vinicius</td>
+                    <td>Garcia</td>
+                    <td>Daniel Olivier</td>
+                    <td>W</td>
+                    <td></td>
+                    <td>Canto choke</td>
+                    <td>New Orleans Open</td>
+                    <td>88KG</td>
+                    <td></td>
+                    <td>SF</td>
+                    <td></td>
+                    <td>2020</td>
+                </tr>
+                <tr>
+                    <td class="index-column">51296</td>
+                    <td>Vinicius</td>
+                    <td>Garcia</td>
+                    <td>Joshua Murdock</td>
+                    <td>W</td>
+                    <td></td>
+                    <td>Points</td>
+                    <td>New Orleans Open</td>
+                    <td>ABS</td>
+                    <td></td>
+                    <td>SF</td>
+                    <td></td>
+                    <td>2020</td>
+                </tr>
+                <tr>
+                    <td class="index-column">51297</td>
+                    <td>Vinicius</td>
+                    <td>Garcia</td>
+                    <td>Kyle Raemisch</td>
+                    <td>W</td>
+                    <td></td>
+                    <td>Mounted X choke</td>
+                    <td>F2W 153</td>
+                    <td>85KG</td>
+                    <td></td>
+                    <td>SPF</td>
+                    <td></td>
+                    <td>2020</td>
+                </tr>
+                <tr>
+                    <td class="index-column">51298</td>
+                    <td>Vinicius</td>
+                    <td>Garcia</td>
+                    <td>Kevin Vieira</td>
+                    <td>W</td>
+                    <td></td>
+                    <td>Hashimoto choke</td>
+                    <td>Pan American</td>
+                    <td>82KG</td>
+                    <td></td>
+                    <td>8F</td>
+                    <td></td>
+                    <td>2020</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Display row and column count -->
+        <div class="table-info">
+            [51299 rows x 9 columns]
+        </div>
+        
+        </body>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+<section id="Conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="Conclusion">Conclusion</h2>
+<p>We now have a full dataframe of all of the match results included on the BJJHeroes website that we can use for analysis. </p>
+<p>Some cleaning is required, as in the process of merging on the ID some duplciates were formed. There are also some athletes who appear twice on the A-Z list with different name spellings. Additionally, the rest of the data entered into the athlete stats tables are not uniformly formatted, but this will all be taken care of in another project.</p>
+<p>If you are interested in the data as of 9/09/2024, you can access it below</p>
+
+<body>
+
+<a href="BJJ_Heroes_Scraped.csv" download="BJJ_Heroes_Scraped.csv">Click here to download the CSV file</a>
+
+
+
+</body>
+</section>
+
+
+
+
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+</div> <!-- /content -->
+<!--
+
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+<p>About</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../license.html">
+<p>License</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../trademark.html">
+<p>Trademark</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>   
+
+-->
+
+
+
+
+</body></html>

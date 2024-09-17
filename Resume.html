@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.545">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ryan Dearing </title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(images/br2.png);
+background-size: cover;
+      }
+</style>
+
+
+
+
+
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+  </div>
+            <!-- <div id="quarto-search" class="" title="Search"></div> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li> 
+  <li class="nav-item">
+    <a class="nav-link" href="./Projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li> 
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+
+
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/ryan-dearing/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li> 
+
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/dearingdata"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li> 
+
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:dearingryan93@gmail.com"> 
+      <i class="bi bi-envelope" role="img"></i>
+      <span class="menu-text"></span>
+    </a>
+  </li>
+</ul>
+
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+
+<!-- content ------------------------------------------------------->
+
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+    <div class="quarto-title-banner page-columns page-full">
+      <div class="quarto-title column-body">
+        <h1 class="title">Ryan Dearing Resume</h1>
+        <p>Dearingryan93@gmail.com<br></p>
+        <a href="Resume.pdf" class="about-link" rel="" target="">
+            <i class="bi bi-file-earmark-person-fill"></i>
+             <span class="about-link-text"><b>Downloadable Resume</b></span>
+          </a>
+        
+        <div class="quarto-categories">
+                  <div class="quarto-category">Data Science</div>
+                  <div class="quarto-category">Data Analytics</div>
+                  <div class="quarto-category">Python</div>
+                  <div class="quarto-category">Business Analytics</div>
+                  <div class="quarto-category">Machine Learning</div>
+                </div>
+                    </div>
+    </div>
+      </div>
+      
+    
+    </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+
+
+
+
+  <!-- sidebar ------------------------------------------------------>
+  <!-- margin-sidebar ---------------------------------------------->
+      <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+          <nav id="TOC" role="doc-toc" class="toc-active">
+      <h2 id="toc-title">On this page</h2>
+     
+    <ul>
+    <li><a href="#Summary of Qualifications" id="toc-Summary of Qualifications" class="nav-link active" data-scroll-target="#Summary of Qualifications">Summary of Qualifications</a></li>
+    <li><a href="#Education" id="toc-Education" class="nav-link" data-scroll-target="#Education">Education</a></li>
+    <li><a href="#Data Analytics Experience" id="toc-Data Analytics Experience" class="nav-link" data-scroll-target="#Data Analytics Experience">Data Analytics Experience</a>
+    <li><a href="#School Counseling Experience" id="toc-School Counseling Experience" class="nav-link" data-scroll-target="#School Counseling Experience">School Counseling Experience</a>
+    <ul class="collapse">
+    </ul></li>
+    <li><a href="#Master's Level Data Science Coursework and Skills" id="toc-Master's Level Data Science Coursework and Skills" class="nav-link" data-scroll-target="#Master's Level Data Science Coursework and Skills">Master's Level Data Science Coursework and Skills</a></li>
+    
+    </ul>
+  </nav>
+      </div>
+
+
+
+
+
+  <!-- main -->
+
+
+  <style>
+    #quarto-document-content {
+      max-width: 107%;
+      width: 90vw; /* Adjust as needed */
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  </style>
+  
+
+
+ 
+  
+
+  <main class="content quarto-banner-title-block" id="quarto-document-content">
+  <section id="Summary of Qualifications" style="margin-left: -50px;"class="level2">
+  <h2 class="anchored" Summary of Qualifications">Summary of Qualifications</h2>
+  <p></p>
+  <ul>
+  <li>Earned Master's degree in Applied Data Science and Google Data Analytic Specialist Certificate</li>
+  <li>Proficient in Python, R, and data visualization tools</li>
+  <li>Proven ability to develop predictive models</li>
+  <li>Extensive experience in data analysis and business intelligence</li>
+  <li>Proficient at identifying, utilizing, and presenting business data to inform leader's on cost saving strategies and improving the customer experience</li>
+  <li>Extensive experience working in a team environment with a solutions and logistics based focus</li>
+  </ul>
+  
+
+  </section>
+  <section id="Education" style="margin-left: -50px;"class="level2">
+  <h2 class="anchored" data-anchor-id="Education">Education</h2>
+
+  <p><b>Bay Path University, Longmeadow, MA</b>
+<br>Master of Applied Data Science, <i>Data Science Specialist Track</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;July 2024</p>
+
+  <p><b>Springfield College, Springfield, MA</b>
+<br>Master of Education in Psychology &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;December 2017
+<br>Bachelor of Science in Psychology, Minor: Philosophy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;May 2016</p>
+
+  </section>
+
+
+
+
+  <section id="Data Analytics Experience" style="margin-left: -50px;"class="level2">
+  <h2 class="anchored" data-anchor-id="Data Analytics Experience">Data Analytics Experience</h2>
+
+  <p><b>Cigna Health Insurance, Bloomfield, CT</b>
+    <br><i>Business Analyst Advisor</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2023-Present</p>
+    <ul>
+        <li>Developed a call listening and data analysis project that reduced daily transfer call volume by an average of 600+, resulted in an annualized savings of $500,000+; a project that was one key factor to a business leader's promotion</li>
+        <li>Predicted customer renewals using a Random Forest Classification model with customer survey data</li>
+        <li>Utilized A/B testing to predict increased call volume based on marketing mailings to customers and providers</li>
+        <li>Created Indexes to measure customer Problem Resolution, Information Accessibility, Satisfaction, and Customer Support Representative Performance</li>
+        <li>Created a Linear Regression Model to predict/forecast the likelihood of a claim for multiple lines of business</li>
+        <li>Created and delivered daily reports for the January to February 2024 time period; monitored daily call categories and reported on anomalous behavior within KPIs to drive interventions to improve caller experience</li>
+        <li>Created a Linear Regression Model to predict/forecast the likelihood of a claim for multiple lines of business</li>
+        <li>Conducted analysis on customer satisfaction surveys to identify driving factors in low and high scoring surveys</li>
+        <li>Analyzed and made recommendations regarding Individual and Family Plan(IFP) Interactive Voice Response (IVR)</li>
+        <li>Audited, analyzed, and presented the differences and impact of two different customer surveys to business leader's</li>
+        <li>Trained colleagues on internal dashboards and how to extract data for more comprehensive analysis</li>
+        <li>Led presentations and provided key recommendations to business leader's</li>
+        <li>Analyzed and determined interventions to reduce call transfers</li>
+        <li>Collaborated among different lines of business/departments to identify and resolve customer and process problems</li>
+        <li>Managed quarterly presentations to two lines of business, identifying positive performance and areas of improvement</li>
+        <li>Learned new technologies and datasets for business needs including but not limited to Verint, Tableau Dashboards, Knowledge Exchange, OneView (a customer data management system)</li>
+    </ul>
+</p>
+<p>  <p><b>Springfield College, Springfield, MA</b>
+    <br><i>Admissions Call Center Manager</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017-2018</p>
+    <ul>
+        <li>Reported tracking analysis to senior level admissions and enrollment management personnel</li>
+        <li>Utilized Microsoft Excel to manage call center data and reported to supervisors</li>
+        <li>Tracked a wide array of metrics, including total call volume, all levels of prospective student interest (on-campus engagement, website referral/tracking, prospective student enthusiasm)</li>
+        <li>Screened, hired, and on boarded staff</li>
+        <li>Tracked individual employee performance and provided feedback on efficiency</li>
+    </ul></p>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+  <section id="School Counseling Experience" style="margin-left: -50px;"class="level2">
+  <h2 class="anchored" data-anchor-id="School Counseling Experience">School Counseling Experience</h2>
+
+  <p>  <p><b>Chicopee High School, Chicopee, MA</b>
+    <br><i>School Social Worker SED Program</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-2023</p>
+    <ul>
+        <li>Collected, organized, visualized and presented data on individual student behaviors and Key Performance Indicators; implemented new routines, procedures, and protocols for the program</li>
+        <li>Oversaw a substantially separate program for students with severe emotional disabilities and the day-to-day schedules and operations of three teachers and five paraprofessionals</li>
+        <li>Conducted crisis intervention for at-risk students and de-escalated high-risk situations</li>
+</ul>
+</p>
+
+<p>  <p><b>Monson High School, Monson, MA</b>
+    <br><i>School Counselor</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019-2022</p>
+    <ul>
+        <li>Analyzed data screening of 300+ students for anxiety and depression, interpreted data for level of risk, and worked with students, families, and agencies to create treatment plans for long-term support</li>
+        <li>Interpreted Psychological Testing data as part of a team to inform student recommendations</li>
+        <li>Implemented and streamlined technology in order to collect data, increase efficient communication, and create targeted interventions</li>
+</ul>
+</p>
+
+<p>  <p><b>Kelly Elementary School, Holyoke, MA</b>
+    <br><i>School Counselor</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2018-2019</p>
+    <ul>
+        <li>Researched and utilized community resources and organizations to pair with families in need</li>
+        <li>Utilized demographic data to inform school-wide events</li>
+        <li>Conducted and interpreted Functional Behavioral Analysis, presented findings at meetings, and worked with teachers to implement effective strategies for student management</li>
+</ul>
+</p>
+  </section>
+
+
+
+
+
+  <section id="Master's Level Data Science Coursework and Skills" style="margin-left: -50px;"class="level2">
+  <h2 class="anchored" data-anchor-id="Master's Level Data Science Coursework and Skills">Master's Level Data Science Coursework and Skills</h2>
+  
+<H3><b>Coursework</b>
+</H3>
+
+<div class="quarto-title column-body">
+    <p class="quarto-categories">
+      <span class="quarto-category"><b>Foundations of Data Science</b></span>
+      <span class="quarto-category"><b>Probability and Statistical</b></span>
+      <span class="quarto-category"><b>Statistical Modeling</b></span>
+      <span class="quarto-category"><b>Data Mining 1</b></span>
+      <span class="quarto-category"><b>Data Mining 2</b></span>
+      <span class="quarto-category"><b>Data Exploration and Visualization</b></span>
+      <span class="quarto-category"><b>Database Systems</b></span>
+      <span class="quarto-category"><b>Deep Learning</b></span>
+      <span class="quarto-category"><b>Text Mining</b></span>
+      <span class="quarto-category"><b>Case Analysis Capstone</b></span>
+    </p>
+
+
+<H3><b>Skills</H3>
+</p>
+
+<div class="quarto-title column-body">
+    <p class="quarto-categories">
+        <Strong>Programmings Languages:</Strong>
+        <span class="quarto-category"><b>Python</b></span>
+        <span class="quarto-category"><b>R</b></span>
+        <span class="quarto-category"><b>SQL</b></span>    </p>
+    </div>
+
+<div class="quarto-title column-body">
+    <p class="quarto-categories">
+        <b>Data Analysis Tools:</b>
+        <span class="quarto-category"><b>Excel</b></span>
+        <span class="quarto-category"><b>Tableau</b></span>
+        <span class="quarto-category"><b>Powerbi</b></span>    </p>
+    </div>
+<div class="quarto-title column-body">
+    <p class="quarto-categories">
+        <b>Machine Learning:</b>
+        <span class="quarto-category"><b>Random Forest</b></span>
+        <span class="quarto-category"><b>Linear Regression</b></span>
+        <span class="quarto-category"><b>Neural Networks</b></span> 
+        <span class="quarto-category"><b>A/B Testing</b></span>    </p>
+            </div>
+<div class="quarto-title column-body">
+    <p class="quarto-categories">
+        <b>Data Management:</b>
+            <span class="quarto-category"><b>Data Mining</b></span>
+            <span class="quarto-category"><b>Web Scraping</b></span>
+            <span class="quarto-category"><b>API Integration</b></span> 
+ </p>
+                </div>
+
+
+            </div>
+        </section>
+
+</section>
+
+
+
+
+
+
+  </main> <!-- /main -->
+
