@@ -7,7 +7,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+
+
+
+
+
+
+
 <title>Ryan Dearing </title>
+
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +31,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -30,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<!-- <link href="./images/logo.png" rel="icon" type="image/png"> -->
+<link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -69,6 +78,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+
+
+
+
+
+
+
+
+
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
@@ -120,6 +138,8 @@ ul.task-list li input[type="checkbox"] {
         color: white;
 background-image: url(images/br2.png);
 background-size: cover;
+
+
       }
 </style>
 
@@ -162,6 +182,83 @@ window.Quarto = {
 
 
 </head>
+
+
+
+<style>
+  /* General Styles for larger screens */
+  body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; /* Ensure padding and borders are included in the width */
+      overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  .quarto-title {
+      display: flex;
+      align-items: center;
+  }
+
+  .quarto-title div {
+      text-align: left; /* Ensure text is left-aligned */
+  }
+
+  /* Mobile-friendly styles */
+  @media only screen and (max-width: 576px) {
+      .quarto-title {
+          
+          flex-direction: column;
+          align-items: flex-start; /* Ensure left alignment on mobile */
+      }
+
+      .quarto-title img {
+          margin-right: 0;  /* Remove right margin on mobile */
+          margin-bottom: 10px; /* Add spacing between image and text */
+          max-width: 150px; /* Reduce image size on mobile */
+      }
+
+      .quarto-title h2 {
+          font-size: 1.5em; /* Adjust font size for smaller screens */
+      }
+
+      .quarto-title p {
+          font-size: 1.2em; /* Adjust font size for smaller screens */
+      }
+
+      .quarto-title div {
+          text-align: left; /* Ensure text stays left-aligned */
+      }
+
+      /* Ensure the page content fits within the mobile screen */
+      body, html {
+          max-width: 100%;
+          overflow-x: hidden;
+      }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <body class="nav-fixed">
 
@@ -226,21 +323,122 @@ window.Quarto = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+<body class="nav-fixed">
+
+  <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+        <div class="navbar-brand-container mx-auto"></div>
+        
+        <!-- Toggler and social icons container -->
+        <div class="d-flex">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Social icons on mobile -->
+
+        </div>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="./index.html" aria-current="page"><span class="menu-text">Home</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./about.html"><span class="menu-text">About me</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Resume.html"><span class="menu-text">Resume</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Projects.html"><span class="menu-text">Projects</span></a>
+            </li>
+          </ul>
+
+          <!-- Social icons for larger screens -->
+          <ul class="navbar-nav ms-auto d-none d-lg-flex">
+            <li class="nav-item compact">
+              <a class="nav-link" href="https://www.linkedin.com/in/ryan-dearing/">
+                <i class="bi bi-linkedin" role="img"></i>
+              </a>
+            </li>
+            <li class="nav-item compact">
+              <a class="nav-link" href="https://github.com/dearingdata">
+                <i class="bi bi-github" role="img"></i>
+              </a>
+            </li>
+            <li class="nav-item compact">
+              <a class="nav-link" href="mailto:dearingryan93@gmail.com">
+                <i class="bi bi-envelope" role="img"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<style>
+  /* Social icons alignment for mobile */
+  .social-icons-mobile {
+    display: flex;
+    gap: 10px; /* Add some space between icons */
+    margin-left: 10px;
+  }
+
+  /* Hide the social icons next to the toggler on larger screens */
+  @media (min-width: 992px) {
+    .social-icons-mobile {
+      display: none;
+      justify-content: right;
+    }
+  }
+</style>
+
+
+
+<style>
+  /* Adjust the margin for mobile screens */
+  @media (max-width: 576px) {
+    .quarto-title img {
+      margin-right: 5px; /* Reduce the space between the image and text */
+      max-width: 150px; /* Optionally, reduce the image size on smaller screens */
+      margin-bottom: -50px;
+    }
+
+    .quarto-title {
+      flex-direction: column; /* Stack image and text vertically if you prefer */
+      text-align: center; /* Center-align the text */
+    }
+  }
+</style>
+
 <!-- content ---------------------------------------------------------------------------------->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-
-
     <div class="quarto-title column-page" style="display: flex; align-items: center;">
-      <img src="images/RD.jpg" alt="Your Image Description" style="max-width: 200px; height:auto; margin-right: 15px;">
+      <img src="images/RD.jpg" alt="Your Image Description"
+        style="max-width: 200px; height: auto; margin-right: 15px;">
       <div>
-       <h2 class="title"><br> Ryan Dearing <br></h2>
-       <p class="subtitle lead">Master's degree in Applied Data Science <br>Business Analyst Advisor with Cigna </p>
+        <h2 class="title"><br> Ryan Dearing <br></h2>
+        <p class="subtitle lead">Master's degree in Applied Data Science <br>Business Analyst Advisor with Cigna</p>
+      </div>
     </div>
   </div>
-  </div>
-  </header>
-    
+</header>
   
   <div class="quarto-title-meta column-page">
 
@@ -257,31 +455,74 @@ window.Quarto = {
 <!-- main -->
 
 
+<style>
+  /* Reduce padding and ensure the title is centered */
+  h2.text-center {
+    margin-bottom: 0px; /* Reduced margin */
+    padding: 0; /* Remove any padding */
+    text-align: center; /* Ensure text is centered */
+    padding-inline-start: 130px;
+  }
 
+  /* Ensure no excessive margins around the grid */
+  .list.grid {
+    padding-inline-start: 0; /* Remove left padding */
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    h2.text-center {
+      font-size: 1.5em; /* Adjust the font size for smaller screens */
+      padding-inline-start: 0px;
+      
+    }
+    .list.grid {
+      gap: 5px; /* Reduce the gap between items on small screens */
+      
+    }
+  }
+</style>
+
+
+<style>
+
+
+  /* Make the grid responsive for mobile */
+  @media (max-width: 576px) {
+    .g-col-1 {
+      width: 63%; /* Ensure it takes full width on mobile */
+      padding-inline-start: 30px;
+    }
+
+    .quarto-grid-item {
+      max-width: 100%; /* Adjusts card to fit the screen width */
+      margin: px auto; /* Center the card with some margin */
+    }
+
+    .card-img-top img {
+      height: auto; /* Let the image adapt to mobile width */
+      width: 100%;
+      object-fit: cover; /* Keep the image properly fitted */
+    }
+  }
+</style>
 
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3"style="padding-inline-start: 100px; gap: 10px; margin-right: -200px; margin-left: -150px;">
 
 
-  <div class="g-col-3" data-index="0" data-categories="Python,R,Coding practices" data-listing-date-sort="1705622400000" data-listing-file-modified-sort="1705643881871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="904">
-    <div class="quarto-grid-item card h-75 card-left">
-    <div class="card-body post-contents">
-    <h5 class="no-anchor card-title listing-title" style="text-align: center; width: 100%; margin: 0 auto;">
+  <h2 class="text-center" style="margin-bottom: 20px; margin-top: -25px; ">
     <strong>Recent Projects</strong>
-    </h5>
-
-    <div class="card-attribution card-text-small justify">
-    </div>
-    </div>
-    </div>
-    </a>
-    </div>
+  </h2>
 
 
 
 
 
+
+    <div class="list grid quarto-listing-cols-3"style="padding-inline-start: 100px; gap: 10px; margin-right: -200px; margin-left: -150px;">
 
     <div class="g-col-1" data-index="0" data-categories="All Projects,Machine Learning,Python,Data Science,Modeling,Neural Networks,Random Forest" data-listing-date-sort="1705622400000" data-listing-file-modified-sort="1705643881871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="904">
       <a href="./posts/BJJHeroesDataModeling/BJJHeroesDataModelingProject.html" class="quarto-grid-link">
@@ -363,7 +604,6 @@ window.Quarto = {
       <div class="listing-category" onclick="window.quartoListingCategory('Coding Practices'); return false;">
       Coding Practices
       </div>
-     
       </div>
       <div class="card-text listing-description">
       In this project, I will be cleaning the data that was scraped from the Webscraping BJJHeroes.com project.
@@ -423,11 +663,14 @@ window.Quarto = {
 
 
 
+
+
 </div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+
+</main>
+
+
+<!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
