@@ -157,6 +157,70 @@ window.Quarto = {
 
 </head>
 
+<style>
+  /* General Styles for larger screens */
+  body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; /* Ensure padding and borders are included in the width */
+      overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+
+
+  .quarto-title div {
+      text-align: left; /* Ensure text is left-aligned */
+  }
+
+  /* Mobile-friendly styles */
+  @media only screen and (max-width: 576px) {
+      .quarto-title {
+          
+          flex-direction: column;
+          align-items: flex-start; /* Ensure left alignment on mobile */
+      }
+
+      .quarto-title img {
+          margin-right: 0;  /* Remove right margin on mobile */
+          margin-bottom: 10px; /* Add spacing between image and text */
+          max-width: 150px; /* Reduce image size on mobile */
+      }
+
+      .quarto-title h2 {
+          font-size: 1.5em; /* Adjust font size for smaller screens */
+      }
+
+      .quarto-title p {
+          font-size: 1.2em; /* Adjust font size for smaller screens */
+      }
+
+      .quarto-title div {
+          text-align: left; /* Ensure text stays left-aligned */
+      }
+
+      /* Ensure the page content fits within the mobile screen */
+      body, html {
+          max-width: 100%;
+          overflow-x: hidden;
+      }
+  }
+</style>
+
+<style>
+  /* Adjust the margin for mobile screens */
+  @media (max-width: 576px) {
+    .quarto-title img {
+      margin-right: 5px; /* Reduce the space between the image and text */
+      max-width: 150px; /* Optionally, reduce the image size on smaller screens */
+      margin-bottom: -50px;
+    }
+
+    .quarto-title {
+      flex-direction: column; /* Stack image and text vertically if you prefer */
+      text-align: center; /* Center-align the text */
+    }
+  }
+</style>
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
@@ -217,8 +281,57 @@ window.Quarto = {
       </div> <!-- /container-fluid -->
     </nav>
 </header>
+<style>
+  /* Reduce padding and ensure the title is centered */
+  h2.text-center {
+    margin-bottom: 0px; /* Reduced margin */
+    padding: 0; /* Remove any padding */
+    text-align: center; /* Ensure text is centered */
+    padding-inline-start: 130px;
+  }
+
+  /* Ensure no excessive margins around the grid */
+  .list.grid {
+    padding-inline-start: 0; /* Remove left padding */
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    h2.text-center {
+      font-size: 1.5em; /* Adjust the font size for smaller screens */
+      padding-inline-start: 0px;
+      
+    }
+    .list.grid {
+      gap: 5px; /* Reduce the gap between items on small screens */
+      
+    }
+  }
+</style>
+<style>
 
 
+  /* Make the grid responsive for mobile */
+  @media (max-width: 576px) {
+    .g-col-1 {
+      width: 63%; /* Ensure it takes full width on mobile */
+      padding-inline-start: 30px;
+    }
+
+    .quarto-grid-item {
+      max-width: 100%; /* Adjusts card to fit the screen width */
+      margin: px auto; /* Center the card with some margin */
+    }
+
+    .card-img-top img {
+      height: auto; /* Let the image adapt to mobile width */
+      width: 100%;
+      object-fit: cover; /* Keep the image properly fitted */
+    }
+  }
+</style>
 
 
 
@@ -226,6 +339,7 @@ window.Quarto = {
     <div class="quarto-title-banner page-columns page-full" style="display: flex; justify-content: center; align-items: center; height: 24vh;">
       <div class="quarto-title column-body">
         <div style="text-align:center">
+        <br><br>
         <h1 class="title">Projects</h1></div>
         
  
